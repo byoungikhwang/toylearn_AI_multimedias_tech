@@ -4,6 +4,5 @@
  2. 의 양식대로 출력. 
  - 단 양식에 3항은 표 형태로 만든다.
  1. https://docs.google.com/spreadsheets/d/1KZlqe6HvfufWMOejrlQbxfvGMaH_25KUrYMoUsJZQxQ/edit?gid=0#gid=0  
- 2. 
- https://docs.google.com/document/d/1on7wPVy4bso6Bx0i9DPSR-M3DllvXaR-6eKrtco18lc/edit?tab=t.0 
+ 2. https://docs.google.com/document/d/1on7wPVy4bso6Bx0i9DPSR-M3DllvXaR-6eKrtco18lc/edit?tab=t.0 
 ```
