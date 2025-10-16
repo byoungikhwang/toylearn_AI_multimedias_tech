@@ -1,0 +1,256 @@
+{
+  "name": "study_03_trigger_schedule_RSSread",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "1738856576",
+        "text": "=n&8에서 보냅니다.\nxml 형식입니다.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        -176
+      ],
+      "id": "38a39c93-9eea-4e9b-8318-2c4a8a8a0063",
+      "name": "Send a text message",
+      "webhookId": "304ae1df-7147-4c4c-b9a6-2ce9be2c6a03",
+      "credentials": {
+        "telegramApi": {
+          "id": "fKIVH6830e8tSeTg",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -464,
+        -176
+      ],
+      "id": "a265036a-a72a-44bd-950c-b4a37b50eb4e",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://finance.daum.net/domestic/market_cap",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "market",
+              "value": "KOSPI"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        -176
+      ],
+      "id": "0d11a8a2-e51c-4dc5-a4dc-2d3e69145143",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "https://www.yna.co.kr/rss/industry.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -256,
+        16
+      ],
+      "id": "a0eb2178-c261-4a9e-9c08-a8624886499a",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        16
+      ],
+      "id": "6e8a0d93-38d7-498a-b34c-3add3f29c32d",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "chatId": "1738856576",
+        "text": "=n&8에서 보냅니다.\n제목:{{ $json.title }}\n발행일:{{ $json.pubDate }} ",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        16
+      ],
+      "id": "7a0a6f0b-dbbd-4438-8002-244dfc940cee",
+      "name": "Send a text message1",
+      "webhookId": "304ae1df-7147-4c4c-b9a6-2ce9be2c6a03",
+      "credentials": {
+        "telegramApi": {
+          "id": "fKIVH6830e8tSeTg",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://mbnmoney.mbn.co.kr/rss/news/stock",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -256,
+        192
+      ],
+      "id": "49b51baf-0bac-4a1f-80ee-d4df6047a4b9",
+      "name": "RSS Read1"
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        192
+      ],
+      "id": "cb8c8ffa-2ca2-4848-9dfe-78ba691f1507",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "chatId": "1738856576",
+        "text": "=n&8에서 보냅니다.\n제목:{{ $json.title }}\n발행일:{{ $json.pubDate }} ",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        192
+      ],
+      "id": "c51c3fd5-bc8e-48b8-8214-7c688723e547",
+      "name": "Send a text message2",
+      "webhookId": "304ae1df-7147-4c4c-b9a6-2ce9be2c6a03",
+      "credentials": {
+        "telegramApi": {
+          "id": "fKIVH6830e8tSeTg",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ac36c6c8-8e27-466f-b70b-7e1bbbddf5db",
+  "meta": {
+    "instanceId": "c76ce5ff8125e89e972551780a8b6d907ed42ce26a98d6b46ced5764d82ba60c"
+  },
+  "id": "72eiHs9S2zhrmXpP",
+  "tags": []
+}
