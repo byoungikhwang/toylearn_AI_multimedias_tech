@@ -1,0 +1,329 @@
+{
+  "name": "04_action_loop_ai",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -736,
+        -256
+      ],
+      "id": "ec4cc21d-4424-4132-a041-da1fac48bde9",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n\"feeds\": [\n\"https://www.yna.co.kr/rss/industry.xml\",\n\"https://mbnmoney.mbn.co.kr/rss/news/stock\",\n\"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\"https://www.yna.co.kr/rss/industry.xml\",\n\"https://www.sportschosun.com/rss/index_all.htm\",\n\"https://news.sbs.co.kr/news/headlineRssFeed.do?plink=RSSREADER\",\n\"https://news.google.com/rss/headlines/section/tech?hl=ko&gl=KR&ceid=KR:ko\",\n\"https://www.yna.co.kr/rss/industry.xml\",\n\"https://news.sbs.co.kr/news/Subusu_RssFeed.do?plink=RSSREADER\",\n\"https://www.hankyung.com/feed/finance\",\n\"https://www.yna.co.kr/rss/entertainment.xml\"\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -528,
+        -256
+      ],
+      "id": "7c41eb49-b94f-4514-b86a-c92fa3c6383c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "feeds",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -256
+      ],
+      "id": "fed0aac4-cfbb-408f-b97e-105b59414f44",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -112,
+        -256
+      ],
+      "id": "617259ed-4e44-4ef2-816c-717acac320e4",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.feeds }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        -240
+      ],
+      "id": "d1093f16-7062-40b7-8933-aee6a3f6d8b9",
+      "name": "RSS Read4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        256,
+        -240
+      ],
+      "id": "c25ea940-2061-4edf-b900-e9e1a3576e46",
+      "name": "Limit4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ea88a38-e856-4c09-b584-f1278ccd4300",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "c35d891f-7b59-4bf7-9278-85890cbb94a8",
+              "name": "link",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "e9e1ffec-3b6f-469d-9613-4d06621bfd1d",
+              "name": "content:encoded",
+              "value": "={{ $json[\"content:encodedSnippet\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "ff9220a2-e966-462c-9df7-3af086671280",
+              "name": "pubDate",
+              "value": "={{ $json.pubDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -560,
+        32
+      ],
+      "id": "95badf7a-ab08-4c6b-8a6e-69479aa321ce",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "chatId": "1738856576",
+        "text": "={{ $json.content.parts[0].text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        240
+      ],
+      "id": "82c0dc35-ea65-4659-8e66-fab4ffc31a72",
+      "name": "Send a text message",
+      "webhookId": "2cfcdab3-ec71-463c-b99e-b7efc643eeea",
+      "credentials": {
+        "telegramApi": {
+          "id": "UhoxSbTTFEx5rqGK",
+          "name": "Telegram account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=당신은 정리의 신이야 \ncontent 필드 값을 15자로 줄여줘,\n대답은 필요 없고,\n입력 값에 맞게, jons 형태아닌 목록 형식으로 출력.\n\n## 입력값\n  {\n    \"title\": {{ $json.title }},\n    \"link\": {{ $json.link }},\n    \"content:encoded\":{{ $json['content:encoded'] }},\n    \"pubDate\": {{ $json.pubDate }}\n  }\n## 출력 형식\n타이틀:\n내용:\n링크:"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -352,
+        32
+      ],
+      "id": "e48725ee-ec90-424d-ac77-b63e5a02c7d3",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "ISaYyOXbU9Sj41Tr",
+          "name": "Google Gemini(PaLM) Api account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "1738856576",
+        "text": "=뉴스:{{ $json.content.parts[0].text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -16,
+        32
+      ],
+      "id": "5b6ad3c5-a603-4754-bb55-8fb1583fb95b",
+      "name": "Send a text message2",
+      "webhookId": "304ae1df-7147-4c4c-b9a6-2ce9be2c6a03",
+      "credentials": {
+        "telegramApi": {
+          "id": "fKIVH6830e8tSeTg",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "instructions": "// JSON 전체를 문자열로 변환\nreturn [\n  {\n    json: {\n      text: JSON.stringify($json) // 현재 아이템의 json을 string으로 변환\n    }\n  }]\n];",
+        "codeGeneratedForPrompt": "// JSON 전체를 문자열로 변환\nreturn [\n  {\n    json: {\n      text: JSON.stringify($json) // 현재 아이템의 json을 string으로 변환\n    }\n  }]\n];",
+        "jsCode": "const items = $input.all();\nconst textItems = items.map((item) => ({\n  json: { text: JSON.stringify(item.json) },\n}));\nreturn textItems;\n"
+      },
+      "type": "n8n-nodes-base.aiTransform",
+      "typeVersion": 1,
+      "position": [
+        192,
+        240
+      ],
+      "id": "d1f8b225-a1b8-48f7-b06a-89dea672a5f0",
+      "name": "AI Transform"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RSS Read4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read4": {
+      "main": [
+        [
+          {
+            "node": "Limit4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8a03dd8d-eaba-41e2-8a8e-c5e7e80b5dd6",
+  "meta": {
+    "instanceId": "c76ce5ff8125e89e972551780a8b6d907ed42ce26a98d6b46ced5764d82ba60c"
+  },
+  "id": "s7FohFSvfOsrLNkm",
+  "tags": []
+}
