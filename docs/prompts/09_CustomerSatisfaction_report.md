@@ -105,14 +105,6 @@ https://docs.google.com/document/d/1w19GyajjWoi798ToAlZAL_MCVdjh6djNki6Hgj2rCeg/
 
 ***
 
-**+ 다음 단계 제안**
-
-1.  **재무 영향 분석 (Financial Impact Analysis):** 도출된 3가지 가격 및 서비스 개선 제안에 대해 재무 부서와 협력하여 예상되는 매출 증대 효과, 비용 증가분, 최종 수익성 변화를 시뮬레이션하고 보고서를 확정합니다.
-2.  **프로세스 혁신 팀 구성 (Process Innovation Team Launch):** 최저 점수를 받은 '사후 지원 및 피드백 프로세스' 개선을 위해 IT 및 운영 부서가 참여하는 TFT(Task Force Team)를 즉각 구성하여, 2주 이내에 구체적인 업무 매뉴얼(SOP) 개정안을 마련합니다.
-3.  **개정 정책 기반 마케팅 콘텐츠 기획:** 확정된 새로운 가격 정책 및 개선된 서비스 내용을 홍보할 수 있는 **차별화된 마케팅 콘텐츠 및 영업 자료(Sales Deck) 기획**을 마케팅 전문가 그룹에게 지시합니다.
-```
-
-```
 ## 다음 단계 제안 세부 실행 계획
 
 **I. 재무 영향 분석 (Financial Impact Analysis)**
@@ -202,3 +194,4 @@ https://docs.google.com/document/d/1w19GyajjWoi798ToAlZAL_MCVdjh6djNki6Hgj2rCeg/
     }
   ]
 }
+```
