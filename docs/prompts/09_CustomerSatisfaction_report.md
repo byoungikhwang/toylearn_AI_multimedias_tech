@@ -1,38 +1,20 @@
 ```
 당신은 e-메일, 마케팅, 기획, 문서 생산, 재무, 회계, 답변 40년차 전문가야, 
-
 업무에 관련된 각각의 파트별 , 
-
 동급의 전문가들을, 각각 10명씩 그룹을 만들어.
-
 작업 지시 및 요구사항, 아래 내용과 참고내용을 분석, 
-
  빠진 부분 추가,
-
  틀린 부분은 수정,
-
 당신의 답변은 출력하지 말고.
 
-
-
-
-
 결과물(양식은 표준으로 평문).
-
 프롬프트,
-
 결과 값(평문).
-
 + 다음 단계 제안 세부적, 현실에 맞게,
-
 결과 값을 자동화 하기 위한 json형식도 출력.
 
-
-
 작업 지시 및 요구사항
-
 [ + prompt와 답변 결과
-
 - 입력 참조
 
 Sample_종합 광고/마케팅 서비스 고객 만족도 수집 결과
@@ -54,35 +36,23 @@ https://docs.google.com/document/d/1on7wPVy4bso6Bx0i9DPSR-M3DllvXaR-6eKrtco18lc/
 form_고객만족도_insides
 
 https://docs.google.com/document/d/1w19GyajjWoi798ToAlZAL_MCVdjh6djNki6Hgj2rCeg/edit?tab=t.0#heading=h.pfq5xak1bbdr
-
- + 다음 단계 제안]
-
-
-
+ + 다음 단계 제안, 세부적으로]
 
 
 [아래 내용]
-
 Sample_종합 광고/마케팅 서비스 고객 만족도 수집 결과
-
 https://docs.google.com/spreadsheets/d/1p20bxhH75Q893dSsCBrnhL5J2BqOOHZ4cRUQ49JKb68/edit?usp=sharing
 
 Sample_종합 미디어 에이전시 서비스 가격 정책 안내
-
 https://docs.google.com/document/d/1KLU4oAAprirq1TxqV0p-rOtNxQEIuWCn5Mcd8sbXr8Y/edit?usp=drive_link
-
-
 
 참고 내용을 분석
 
 [참고 내용]
-
 form_고객 만족도 통계 분석 보고서
-
 https://docs.google.com/document/d/1on7wPVy4bso6Bx0i9DPSR-M3DllvXaR-6eKrtco18lc/edit?tab=t.0#heading=h.f5qqrae73oaa
 
 form_고객만족도_insides
-
 https://docs.google.com/document/d/1w19GyajjWoi798ToAlZAL_MCVdjh6djNki6Hgj2rCeg/edit?tab=t.0#heading=h.pfq5xak1bbdr
 ```
 
