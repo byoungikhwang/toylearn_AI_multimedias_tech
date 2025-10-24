@@ -1,11 +1,103 @@
 ```
+당신은 e-메일, 마케팅, 기획, 문서 생산, 재무, 회계, 답변 40년차 전문가야, 
+
+업무에 관련된 각각의 파트별 , 
+
+동급의 전문가들을, 각각 10명씩 그룹을 만들어.
+
+작업 지시 및 요구사항, 아래 내용과 참고내용을 분석, 
+
+ 빠진 부분 추가,
+
+ 틀린 부분은 수정,
+
+당신의 답변은 출력하지 말고.
+
+
+
+
+
+결과물(양식은 표준으로 평문).
+
+프롬프트,
+
+결과 값(평문).
+
++ 다음 단계 제안 세부적, 현실에 맞게,
+
+결과 값을 자동화 하기 위한 json형식도 출력.
+
+
+
+작업 지시 및 요구사항
+
+[ + prompt와 답변 결과
+
+- 입력 참조
+
+Sample_종합 광고/마케팅 서비스 고객 만족도 수집 결과
+
+https://docs.google.com/spreadsheets/d/1p20bxhH75Q893dSsCBrnhL5J2BqOOHZ4cRUQ49JKb68/edit?usp=sharing
+
+Sample_종합 미디어 에이전시 서비스 가격 정책 안내
+
+https://docs.google.com/document/d/1KLU4oAAprirq1TxqV0p-rOtNxQEIuWCn5Mcd8sbXr8Y/edit?usp=drive_link
+
+
+
+- 출력 형식 참조 :  업무 분석 보고서로 아래 내용 포함
+
+form_고객 만족도 통계 분석 보고서
+
+https://docs.google.com/document/d/1on7wPVy4bso6Bx0i9DPSR-M3DllvXaR-6eKrtco18lc/edit?tab=t.0#heading=h.f5qqrae73oaa
+
+form_고객만족도_insides
+
+https://docs.google.com/document/d/1w19GyajjWoi798ToAlZAL_MCVdjh6djNki6Hgj2rCeg/edit?tab=t.0#heading=h.pfq5xak1bbdr
+
+ + 다음 단계 제안]
+
+
+
+
+
+[아래 내용]
+
+Sample_종합 광고/마케팅 서비스 고객 만족도 수집 결과
+
+https://docs.google.com/spreadsheets/d/1p20bxhH75Q893dSsCBrnhL5J2BqOOHZ4cRUQ49JKb68/edit?usp=sharing
+
+Sample_종합 미디어 에이전시 서비스 가격 정책 안내
+
+https://docs.google.com/document/d/1KLU4oAAprirq1TxqV0p-rOtNxQEIuWCn5Mcd8sbXr8Y/edit?usp=drive_link
+
+
+
+참고 내용을 분석
+
+[참고 내용]
+
+form_고객 만족도 통계 분석 보고서
+
+https://docs.google.com/document/d/1on7wPVy4bso6Bx0i9DPSR-M3DllvXaR-6eKrtco18lc/edit?tab=t.0#heading=h.f5qqrae73oaa
+
+form_고객만족도_insides
+
+https://docs.google.com/document/d/1w19GyajjWoi798ToAlZAL_MCVdjh6djNki6Hgj2rCeg/edit?tab=t.0#heading=h.pfq5xak1bbdr
+```
+
+
+```
 사용된 프롬프트 정리
 프롬프트
 
 제공된 [Sample_종합 광고/마케팅 서비스 고객 만족도 수집 결과] 데이터(스프레드시트)와 [Sample_종합 미디어 에이전시 서비스 가격 정책 안내] 문서(Google Docs)를 종합적으로 분석하여, [form_고객 만족도 통계 분석 보고서] 및 [form_고객만족도_insides] 양식에 맞춰 결과물을 작성하십시오.
 
 특히, 고객 만족도 점수가 낮은 주요 서비스 항목(예: 사후 지원 속도, 초기 기획의 명확성 등)과 현재의 가격 정책(Tier/옵션) 간의 상관관계를 집중 분석하고, 이에 기반한 가격 정책 또는 서비스 프로세스 개선 방안 3가지 이상을 도출하여 보고서에 핵심적으로 반영하십시오. 통계 분석 결과는 시각화(차트/그래프 필요)하고, 고객 인사이트는 '가격 민감도', '서비스 가치 인식', '경쟁사 대비 포지셔닝' 세 가지 측면에서 깊이 있게 서술해야 합니다.
+
 다음 단계 제안 세부적으로 평문으로 만들어.
+
+결과 값을 자동화 하기 위한 json형식도 출력.
 ```
 
 ```
@@ -83,3 +175,60 @@
     * **마케팅 캠페인 기획:** 신규 서비스 론칭을 위한 웹사이트 배너, 보도 자료, 소셜 미디어 콘텐츠 등 통합 마케팅 커뮤니케이션(IMC) 계획을 수립합니다.
 * **기한:** 2025년 11월 28일 (금)까지 최종 영업 자료 및 론칭 캠페인 초안 기획 완료.
 ```
+
+
+```
+{
+  "reportTitle": "성과 편차를 줄이는 마케팅 전략: 종합 광고/마케팅 서비스 고객 만족도 심층 분석 및 개선 과제",
+  "dataSummary": {
+    "totalRespondents": 277,
+    "overallNPS": 39.35,
+    "overallCSAT": 4.37
+  },
+  "keyInsights": [
+    {
+      "id": 1,
+      "title": "정량적 성과와 전문성이 고객 충성도 견인",
+      "detail": "데이터 분석(NPS 100점)과 종합 광고 캠페인(NPS 100점)은 '심도 있는 분석' 및 '전략적 파트너십'에 대한 긍정 피드백으로 최상위 성과 그룹을 형성하며, 고객은 실질적인 결과와 전문성을 가장 높이 평가한다."
+    },
+    {
+      "id": 2,
+      "title": "컨설팅/전략 부문의 심각한 성과 편차 발생",
+      "detail": "CRM 마케팅(NPS -50점), 브랜딩 컨설팅(NPS -33점) 등 전략 기반 서비스는 '느리고 불성실한 피드백', '비현실적 제안' 등으로 인해 최저점을 기록, 서비스 품질 및 신뢰도에 대한 근본적인 개선이 시급하다."
+    },
+    {
+      "id": 3,
+      "title": "전사적 '속도와 투명성' 개선 요구",
+      "detail": "커뮤니케이션 응답 속도, 프로젝트 일정 지연, 옥외/PR 광고 효과 측정의 어려움 등 **프로세스 효율성 및 성과 투명성** 확보에 대한 개선 요청이 전반적으로 높게 나타났다."
+    }
+  ],
+  "performanceComparison": {
+    "topPerformers": [
+      {"category": "데이터 분석", "nps": 100, "csat": 4.9},
+      {"category": "종합 광고 캠페인", "nps": 100, "csat": 4.8},
+      {"category": "오프라인 마케팅", "nps": 86, "csat": 4.7}
+    ],
+    "bottomPerformers": [
+      {"category": "CRM 마케팅", "nps": -50, "csat": 2.8},
+      {"category": "브랜딩 (컨설팅)", "nps": -33, "csat": 3.1},
+      {"category": "B2B 마케팅", "nps": -17, "csat": 3.5}
+    ]
+  },
+  "nextSteps": [
+    {
+      "stepArea": "서비스 모델 개편",
+      "action": "컨설팅 부문(CRM, 브랜딩) 성과 기반 보장형 프로젝트로 전환",
+      "details": "전략 이행 가능성 검토 프로세스 신설 및 투입 전문가 최소 경력 기준(10년 이상) 의무화."
+    },
+    {
+      "stepArea": "프로세스 혁신",
+      "action": "전사적 커뮤니케이션/PM 시스템 고도화",
+      "details": "모든 접점 최대 응답 시간 4시간 이내 규정 및 고객 대상 실시간 일정 공유 대시보드 의무화."
+    },
+    {
+      "stepArea": "성과 측정/보고 강화",
+      "action": "옥외/PR 등 광고 효과 측정 어려움 해소를 위한 표준 ROAS/ROI 보고서 자동화",
+      "details": "모든 캠페인에 온라인 연동 코드 삽입 의무화 및 데이터 분석 팀 주도 표준 성과 보고서 템플릿 구축."
+    }
+  ]
+}
