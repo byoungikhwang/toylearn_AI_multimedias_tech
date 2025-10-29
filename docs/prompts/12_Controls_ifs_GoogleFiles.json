@@ -24,7 +24,7 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -416,
+        -480,
         -64
       ],
       "id": "54eb5177-1c61-4411-a726-acc6e0d46006",
@@ -247,7 +247,7 @@
         "messages": {
           "values": [
             {
-              "content": "=해당 문서 내용을 반드시 한 줄로 일목정연하게 요약 해줘. n8n에서 그대로 사용할 수 있도록 그 어떤 코멘트도 사용하지 말아줘.\n\n{{ $json.numpages }}\n\n\n\n"
+              "content": "=해당 문서 내용을 반드시 한 줄로 일목정연하게 요약 해줘. n8n에서 그대로 사용할 수 있도록 그 어떤 코멘트도 사용하지 말아줘.\n\n{{ JSON.stringify($json) }}\n\n\n"
             }
           ]
         },
@@ -278,8 +278,10 @@
         },
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
@@ -308,29 +310,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "8a07d0fa-2d95-49a7-bdf4-fdc3ee812baa",
-              "name": "whole_text",
-              "value": "={{ JSON.stringify($json) }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        528,
-        480
-      ],
-      "id": "46d9c073-9f6b-4290-aee7-a2954182a071",
-      "name": "Edit Fields"
-    },
-    {
-      "parameters": {
         "fieldsToAggregate": {
           "fieldToAggregate": [
             {
@@ -343,11 +322,12 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        704,
-        480
+        768,
+        576
       ],
       "id": "28bd7eed-0476-445f-92f4-f6c7ebd2fbde",
-      "name": "Aggregate2"
+      "name": "Aggregate2",
+      "disabled": true
     },
     {
       "parameters": {
@@ -357,8 +337,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        384,
-        80
+        400,
+        96
       ],
       "id": "cab280e1-df0e-4abc-974e-193d9be8a236",
       "name": "Extract from File"
@@ -376,8 +356,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        128,
-        80
+        112,
+        96
       ],
       "id": "01c65c56-561d-40eb-ab0c-8f3699871435",
       "name": "Download file",
@@ -468,15 +448,17 @@
         },
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
-          "value": "1ylIGdQBbTBL-KH6niO5kwp-9utAFI6LW",
+          "value": "19kecIvQF0lKe31ra0RFaDv_sn_AuBh2X",
           "mode": "list",
-          "cachedResultName": "docs",
-          "cachedResultUrl": "https://drive.google.com/drive/folders/1ylIGdQBbTBL-KH6niO5kwp-9utAFI6LW"
+          "cachedResultName": "sheets",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/19kecIvQF0lKe31ra0RFaDv_sn_AuBh2X"
         }
       },
       "type": "n8n-nodes-base.googleDrive",
@@ -580,7 +562,7 @@
             {
               "id": "b0438d67-21bf-4eb7-9ab5-d6c14f208b14",
               "leftValue": "={{ $('Google Drive Trigger').item.json.mimeType }}",
-              "rightValue": "text/csv",
+              "rightValue": "application/pdf",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -613,15 +595,17 @@
         },
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
-          "value": "1ylIGdQBbTBL-KH6niO5kwp-9utAFI6LW",
+          "value": "1nWlBrO3A_PZEuo8EexmCHq4caaAXQqg6",
           "mode": "list",
-          "cachedResultName": "docs",
-          "cachedResultUrl": "https://drive.google.com/drive/folders/1ylIGdQBbTBL-KH6niO5kwp-9utAFI6LW"
+          "cachedResultName": "pdfs",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1nWlBrO3A_PZEuo8EexmCHq4caaAXQqg6"
         }
       },
       "type": "n8n-nodes-base.googleDrive",
@@ -687,8 +671,10 @@
         },
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
@@ -744,7 +730,7 @@
       "typeVersion": 2.2,
       "position": [
         -256,
-        784
+        816
       ],
       "id": "f0be1000-2afc-4b84-bca4-06d2f0485911",
       "name": "If7",
@@ -835,8 +821,10 @@
         },
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
@@ -862,6 +850,184 @@
         }
       },
       "notes": "etcs"
+    },
+    {
+      "parameters": {
+        "chatId": "1738856576",
+        "text": "=뉴스:{{ $json.content.parts[0].text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        96,
+        832
+      ],
+      "id": "3166fb69-8e25-4d2a-932f-5fa5cbcc5727",
+      "name": "Send a text message2",
+      "webhookId": "304ae1df-7147-4c4c-b9a6-2ce9be2c6a03",
+      "credentials": {
+        "telegramApi": {
+          "id": "NyxlPJTa43YEpari",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "94b0ee08-a6f9-4393-a101-55e42c47e38c",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "=application/vnd.google-apps.document",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f418a976-acf0-4db4-a71e-ca1f8ff30ec4",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "application/vnd.google-apps.spreadsheet",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "78562854-1e42-47de-8169-5ea017d3dbd7",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "application/pdf",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4fa3d9dd-fbd0-4832-9e0d-1b81f1195983",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "text/csv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1db54878-8ecb-43bd-851a-614a3ce0e147",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -656,
+        448
+      ],
+      "id": "2cea79e0-edbf-4fa2-8ef8-d30a4dbba7e4",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a07d0fa-2d95-49a7-bdf4-fdc3ee812baa",
+              "name": "whole_text",
+              "value": "={{ JSON.stringify($json) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        592,
+        576
+      ],
+      "id": "46d9c073-9f6b-4290-aee7-a2954182a071",
+      "name": "Edit Fields",
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -873,6 +1039,11 @@
             "node": "If",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -882,11 +1053,6 @@
         [
           {
             "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -942,17 +1108,6 @@
         [
           {
             "node": "Append or update row in sheet",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Aggregate2",
             "type": "main",
             "index": 0
           }
@@ -1098,7 +1253,13 @@
             "index": 0
           }
         ],
-        []
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Download file1": {
@@ -1140,13 +1301,24 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "5865f110-8ab0-45d8-868b-4afc24731bcc",
+  "versionId": "bd74d4b2-b619-4aea-81a2-05dc8941b254",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e4e35fce15bcab288b3656628f178ab7b5338d1994d95a329b7b1e3707167395"
