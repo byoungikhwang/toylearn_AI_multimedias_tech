@@ -1,5 +1,5 @@
 {
-  "name": "12_Controls_ifs_GoogleFiles.json",
+  "name": "12_Controls_ifs_GoogleFiles.json0",
   "nodes": [
     {
       "parameters": {
@@ -24,7 +24,7 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -480,
+        -704,
         -64
       ],
       "id": "54eb5177-1c61-4411-a726-acc6e0d46006",
@@ -56,7 +56,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        320,
+        96,
         272
       ],
       "id": "f6b6eb12-81da-4683-80c0-c8387865adf6",
@@ -89,7 +89,7 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        704,
+        688,
         272
       ],
       "id": "9641bfea-e965-418c-9b9e-f53752feaad4",
@@ -208,7 +208,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        528,
+        464,
         272
       ],
       "id": "25369b77-52d0-444d-8512-83e299dcb579",
@@ -256,7 +256,7 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        720,
+        688,
         -80
       ],
       "id": "23c7a094-c55e-4e6a-8f1d-3bb350bfc038",
@@ -307,27 +307,6 @@
         }
       },
       "notes": "docs"
-    },
-    {
-      "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "whole_text"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        768,
-        576
-      ],
-      "id": "28bd7eed-0476-445f-92f4-f6c7ebd2fbde",
-      "name": "Aggregate2",
-      "disabled": true
     },
     {
       "parameters": {
@@ -751,7 +730,7 @@
       "typeVersion": 3,
       "position": [
         96,
-        576
+        592
       ],
       "id": "275389ee-5615-4aa4-ba87-059fc8589e62",
       "name": "Download file1",
@@ -769,8 +748,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        304,
-        576
+        288,
+        448
       ],
       "id": "e599aae9-50cf-4d87-bc8a-3724f5a0d686",
       "name": "Extract from File1"
@@ -1004,30 +983,6 @@
       ],
       "id": "2cea79e0-edbf-4fa2-8ef8-d30a4dbba7e4",
       "name": "Switch"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "8a07d0fa-2d95-49a7-bdf4-fdc3ee812baa",
-              "name": "whole_text",
-              "value": "={{ JSON.stringify($json) }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        592,
-        576
-      ],
-      "id": "46d9c073-9f6b-4290-aee7-a2954182a071",
-      "name": "Edit Fields",
-      "disabled": true
     }
   ],
   "pinData": {},
@@ -1301,24 +1256,13 @@
           }
         ]
       ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Aggregate2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "bd74d4b2-b619-4aea-81a2-05dc8941b254",
+  "versionId": "bf5c2f92-a2ac-49f3-ae01-128860190045",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e4e35fce15bcab288b3656628f178ab7b5338d1994d95a329b7b1e3707167395"
