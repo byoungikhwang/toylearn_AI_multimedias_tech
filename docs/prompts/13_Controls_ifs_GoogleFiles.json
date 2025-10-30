@@ -18,10 +18,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        912,
-        1040
+        -160,
+        -16
       ],
-      "id": "a0b7d0d8-0199-485c-830d-a6d230730370",
+      "id": "d324efbc-fcab-4694-b349-6c47e9e23c96",
       "name": "Edit Fields1"
     },
     {
@@ -38,10 +38,10 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1088,
-        1040
+        16,
+        -16
       ],
-      "id": "0e61f536-22ec-4f87-b8fc-49e049822db0",
+      "id": "e5547963-65d2-428a-b13d-6b10b87d55c2",
       "name": "Aggregate1",
       "notesInFlow": true,
       "notes": "항목 합침"
@@ -66,10 +66,10 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        1536,
-        1056
+        464,
+        0
       ],
-      "id": "07eb9362-a2c1-495a-bf9b-d5396b2ff3fc",
+      "id": "c975bcb5-280c-46d6-8e6d-a777a7f6783c",
       "name": "Message a model1",
       "credentials": {
         "googlePalmApi": {
@@ -86,10 +86,10 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        720,
-        880
+        -352,
+        -176
       ],
-      "id": "a05fb351-02b1-41ed-a0f4-793cb6b32c57",
+      "id": "8179488d-80b6-4848-858b-39d62578687e",
       "name": "Get a document",
       "notesInFlow": true,
       "credentials": {
@@ -108,10 +108,10 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        720,
-        1040
+        -352,
+        -16
       ],
-      "id": "10239c5d-b015-4407-b711-72eaa984af60",
+      "id": "a8cb5301-68d6-43f5-8e25-a95ba20ef26f",
       "name": "Extract from File"
     },
     {
@@ -122,10 +122,10 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        912,
-        1216
+        -160,
+        160
       ],
-      "id": "3fc10fa1-f7ab-42df-aa06-6dd94f4bb536",
+      "id": "3ee2927f-eced-4203-a6c1-eb9b566616a1",
       "name": "Extract from File1"
     },
     {
@@ -137,10 +137,10 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        928,
-        1408
+        -144,
+        352
       ],
-      "id": "a9f1b70e-8c99-4fe8-9b5f-75124ff3188f",
+      "id": "c07b34f5-0f2f-4725-9ef1-89b328c9ad7b",
       "name": "Extract from File2",
       "notesInFlow": true,
       "notes": "text/tab-separated-values"
@@ -154,10 +154,10 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        928,
-        1552
+        -144,
+        496
       ],
-      "id": "1ddd09e2-111e-4936-a1d8-1fda4c40fc97",
+      "id": "660c91fe-c302-4fb3-a581-516377d8bba7",
       "name": "Extract from File3",
       "notesInFlow": true,
       "notes": "text/csv"
@@ -175,10 +175,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        720,
-        1216
+        -352,
+        160
       ],
-      "id": "d5ca83f3-223d-464b-93fb-ef1e71ff09ee",
+      "id": "cfe214e9-a9c2-4bce-8b00-368229af5903",
       "name": "Download file2",
       "notesInFlow": true,
       "credentials": {
@@ -202,10 +202,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        256,
-        1168
+        -816,
+        112
       ],
-      "id": "7ea4ea5e-dce3-4629-a17d-414f100d8b4c",
+      "id": "89dd5758-ba46-4254-860b-2cb5738fa853",
       "name": "Download file",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -223,10 +223,10 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        464,
-        1712
+        -608,
+        656
       ],
-      "id": "9f0b9e00-5340-4c1e-af9e-8f0cf7d1df0f",
+      "id": "106ac711-5fc1-472f-a329-10453e268bdd",
       "name": "Send a text message2",
       "webhookId": "304ae1df-7147-4c4c-b9a6-2ce9be2c6a03",
       "credentials": {
@@ -320,10 +320,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1952,
-        1056
+        880,
+        0
       ],
-      "id": "85881395-d309-4124-88e7-d9444df75424",
+      "id": "c3e9b160-a077-4184-b9ed-b1faf2faf3d4",
       "name": "Append or update row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -355,10 +355,10 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        224,
-        896
+        -848,
+        -160
       ],
-      "id": "7329b93e-aca3-4349-b808-8b0523f6b764",
+      "id": "fe94453e-ad90-44f4-83f1-e462dc3e23ea",
       "name": "Google Drive Trigger",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -515,10 +515,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        400,
-        1104
+        -672,
+        48
       ],
-      "id": "1ae2c1e2-392a-47a3-8cd1-feba4b2318cd",
+      "id": "20bc9c06-410b-4081-ba9c-cae8cf35cde9",
       "name": "Switch"
     },
     {
@@ -538,10 +538,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        912,
-        880
+        -160,
+        -176
       ],
-      "id": "1bc5939b-ab3b-4f6c-9162-8b3f4d627676",
+      "id": "11f36de5-f786-4fc7-bf4e-b2cfbad936fa",
       "name": "Edit Fields"
     },
     {
@@ -561,10 +561,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1072,
-        1216
+        0,
+        160
       ],
-      "id": "40ee3497-47d2-4d56-aea5-f67a3b58b4dd",
+      "id": "8e5226ba-2b4f-4b5d-b38a-ef6351cf7d24",
       "name": "Edit Fields2"
     },
     {
@@ -593,10 +593,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1712,
-        1264
+        944,
+        208
       ],
-      "id": "09928cf2-5c82-4dc9-8faa-a7aeb1249aef",
+      "id": "9231d38b-0ef6-4620-889a-e9967666bb07",
       "name": "economy",
       "notesInFlow": true,
       "credentials": {
@@ -633,10 +633,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1904,
-        1296
+        752,
+        240
       ],
-      "id": "bd57ad88-5092-425e-aea8-ac2fefa17650",
+      "id": "e52b7d7f-4538-4069-afb7-840c7c305d7d",
       "name": "culture",
       "notesInFlow": true,
       "credentials": {
@@ -673,10 +673,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2080,
-        1328
+        560,
+        272
       ],
-      "id": "a4617f9d-b4de-4a5f-b265-75838551fffb",
+      "id": "2ff15de6-2d10-4c39-8019-0512ecb92382",
       "name": "politics",
       "notesInFlow": true,
       "credentials": {
@@ -713,10 +713,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1792,
-        1648
+        864,
+        592
       ],
-      "id": "c1d58d25-b06a-48c0-92ee-b419f5955cc4",
+      "id": "51481e98-a83c-4456-a77d-c7f8cff4b8d5",
       "name": "PDF",
       "notesInFlow": true,
       "credentials": {
@@ -753,10 +753,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1440,
-        1584
+        1216,
+        528
       ],
-      "id": "e0437b3a-f856-477a-a9be-144fa9ff890c",
+      "id": "a9e4584c-b062-47b6-a003-bbe80fa195bd",
       "name": "docs",
       "notesInFlow": true,
       "credentials": {
@@ -793,10 +793,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1616,
-        1616
+        1040,
+        560
       ],
-      "id": "5baed9d5-1fe5-46a3-b5b2-2a566778fc20",
+      "id": "6821c296-00da-43f2-a968-245060712f20",
       "name": "sheets",
       "notesInFlow": true,
       "credentials": {
@@ -833,10 +833,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1968,
-        1680
+        688,
+        624
       ],
-      "id": "2f782639-656b-40f8-b53e-2d6f68c1b9a0",
+      "id": "b9edcd33-1707-439c-bdaa-0ab5314c285d",
       "name": "text/tab-separated-values",
       "notesInFlow": true,
       "credentials": {
@@ -873,10 +873,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2144,
-        1712
+        512,
+        656
       ],
-      "id": "4d0f2beb-d51e-44e3-9312-37425ea89027",
+      "id": "5cbf867f-8766-4768-9049-e95e2f45b68d",
       "name": "text/csv",
       "notesInFlow": true,
       "credentials": {
@@ -913,10 +913,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        2320,
-        1744
+        336,
+        688
       ],
-      "id": "0a29e67a-f8b2-47c2-920b-56acca4b0648",
+      "id": "9eb2a375-728a-4bed-9eb7-3235f576c2f9",
       "name": "그 외",
       "notesInFlow": true,
       "credentials": {
@@ -1027,10 +1027,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        1408,
-        1280
+        336,
+        224
       ],
-      "id": "0ffc0e2d-93bc-4c55-9248-fea563f6b4e2",
+      "id": "f3943e7c-976e-4265-b70a-91848c0ebc72",
       "name": "Switch1"
     },
     {
@@ -1181,10 +1181,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        1232,
-        1600
+        160,
+        544
       ],
-      "id": "a6bef1fa-f7b5-44e5-bcd6-ba66e5fb1813",
+      "id": "723de7e9-437d-4d48-9ed0-833489498b67",
       "name": "Switch2"
     }
   ],
@@ -1478,11 +1478,10 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "319e4bd9-63fe-41c3-8688-d4c1f3c4e561",
+  "versionId": "2825a1f8-c6c3-40bc-a8f8-c0def4f63d7a",
   "meta": {
-    "templateCredsSetupCompleted": true,
     "instanceId": "e4e35fce15bcab288b3656628f178ab7b5338d1994d95a329b7b1e3707167395"
   },
-  "id": "SbWlKm1jcxHvOs0b",
+  "id": "0LX2a7vXUdDDrEv2",
   "tags": []
 }
