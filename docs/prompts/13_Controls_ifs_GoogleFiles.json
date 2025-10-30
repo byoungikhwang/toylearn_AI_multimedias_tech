@@ -945,7 +945,7 @@
                     "rightValue": "(경제|기업|산업|재정|금융|주식|증시|투자|펀드|코스피|코스닥|채권|금리|환율|달러|원화|인하|성장률|물가|소비|대출|규제|흑자|적자|경영|벤처|소상공인|기술자립)",
                     "operator": {
                       "type": "string",
-                      "operation": "contains"
+                      "operation": "regex"
                     },
                     "id": "cd00112d-9b51-4863-9372-520313320a3a"
                   }
@@ -968,7 +968,7 @@
                     "rightValue": "(문화|예술|공연|전시|탐방|축제|연예|드라마|영화|음악|가요|아이돌|K-Pop|방송|생활|여행|패션|미식|맛집|취미|레저|웰빙|역사|박물관|유적|작가|독서)",
                     "operator": {
                       "type": "string",
-                      "operation": "contains"
+                      "operation": "regex"
                     }
                   }
                 ],
@@ -990,7 +990,7 @@
                     "rightValue": "(정치|당권|선거|총선|지방선거|대통령|국회|청와대|정부|장관|국회의원|여당|야당|정당|정책|공약|외교|안보|국방|회담|정상|투표|개혁|민주주의|성명서)",
                     "operator": {
                       "type": "string",
-                      "operation": "contains"
+                      "operation": "regex"
                     }
                   }
                 ],
