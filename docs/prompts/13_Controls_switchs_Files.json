@@ -18,7 +18,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -272,
+        -160,
         -16
       ],
       "id": "d324efbc-fcab-4694-b349-6c47e9e23c96",
@@ -38,7 +38,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -96,
+        16,
         -16
       ],
       "id": "e5547963-65d2-428a-b13d-6b10b87d55c2",
@@ -66,7 +66,7 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        352,
+        464,
         0
       ],
       "id": "c975bcb5-280c-46d6-8e6d-a777a7f6783c",
@@ -86,7 +86,7 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        -464,
+        -352,
         -176
       ],
       "id": "8179488d-80b6-4848-858b-39d62578687e",
@@ -108,7 +108,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -464,
+        -352,
         -16
       ],
       "id": "a8cb5301-68d6-43f5-8e25-a95ba20ef26f",
@@ -122,7 +122,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -272,
+        -160,
         160
       ],
       "id": "3ee2927f-eced-4203-a6c1-eb9b566616a1",
@@ -137,7 +137,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -256,
+        -144,
         352
       ],
       "id": "c07b34f5-0f2f-4725-9ef1-89b328c9ad7b",
@@ -154,7 +154,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -256,
+        -144,
         496
       ],
       "id": "660c91fe-c302-4fb3-a581-516377d8bba7",
@@ -175,7 +175,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -464,
+        -352,
         160
       ],
       "id": "cfe214e9-a9c2-4bce-8b00-368229af5903",
@@ -202,8 +202,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -928,
-        176
+        -816,
+        112
       ],
       "id": "89dd5758-ba46-4254-860b-2cb5738fa853",
       "name": "Download file",
@@ -223,8 +223,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -752,
-        624
+        -608,
+        656
       ],
       "id": "106ac711-5fc1-472f-a329-10453e268bdd",
       "name": "Send a text message2",
@@ -320,7 +320,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        768,
+        880,
         0
       ],
       "id": "c3e9b160-a077-4184-b9ed-b1faf2faf3d4",
@@ -355,8 +355,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -960,
-        -96
+        -848,
+        -160
       ],
       "id": "fe94453e-ad90-44f4-83f1-e462dc3e23ea",
       "name": "Google Drive Trigger",
@@ -515,8 +515,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -784,
-        112
+        -672,
+        48
       ],
       "id": "20bc9c06-410b-4081-ba9c-cae8cf35cde9",
       "name": "Switch"
@@ -538,7 +538,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -272,
+        -160,
         -176
       ],
       "id": "11f36de5-f786-4fc7-bf4e-b2cfbad936fa",
@@ -561,7 +561,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -112,
+        0,
         160
       ],
       "id": "8e5226ba-2b4f-4b5d-b38a-ef6351cf7d24",
@@ -572,7 +572,7 @@
         "operation": "move",
         "fileId": {
           "__rl": true,
-          "value": "={{ $('Google Drive Trigger').item.json.id }}",
+          "value": "={{ $('Get a document').item.json.documentId }}",
           "mode": "id"
         },
         "driveId": {
@@ -593,8 +593,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        640,
-        240
+        944,
+        208
       ],
       "id": "9231d38b-0ef6-4620-889a-e9967666bb07",
       "name": "economy",
@@ -612,7 +612,7 @@
         "operation": "move",
         "fileId": {
           "__rl": true,
-          "value": "={{ $('Google Drive Trigger').item.json.id }}",
+          "value": "={{ $('Get a document').item.json.documentId }}",
           "mode": "id"
         },
         "driveId": {
@@ -633,8 +633,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        864,
-        208
+        752,
+        240
       ],
       "id": "e52b7d7f-4538-4069-afb7-840c7c305d7d",
       "name": "culture",
@@ -652,7 +652,7 @@
         "operation": "move",
         "fileId": {
           "__rl": true,
-          "value": "={{ $('Google Drive Trigger').item.json.id }}",
+          "value": "={{ $('Get a document').item.json.documentId }}",
           "mode": "id"
         },
         "driveId": {
@@ -673,7 +673,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        448,
+        560,
         272
       ],
       "id": "2ff15de6-2d10-4c39-8019-0512ecb92382",
@@ -713,7 +713,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        752,
+        864,
         592
       ],
       "id": "51481e98-a83c-4456-a77d-c7f8cff4b8d5",
@@ -732,7 +732,7 @@
         "operation": "move",
         "fileId": {
           "__rl": true,
-          "value": "={{ $('Google Drive Trigger').item.json.id }}",
+          "value": "={{ $('Get a document').item.json.documentId }}",
           "mode": "id"
         },
         "driveId": {
@@ -753,7 +753,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1104,
+        1216,
         528
       ],
       "id": "a9e4584c-b062-47b6-a003-bbe80fa195bd",
@@ -793,7 +793,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        928,
+        1040,
         560
       ],
       "id": "6821c296-00da-43f2-a968-245060712f20",
@@ -833,7 +833,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        576,
+        688,
         624
       ],
       "id": "b9edcd33-1707-439c-bdaa-0ab5314c285d",
@@ -873,7 +873,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        400,
+        512,
         656
       ],
       "id": "5cbf867f-8766-4768-9049-e95e2f45b68d",
@@ -913,7 +913,7 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        224,
+        336,
         688
       ],
       "id": "9eb2a375-728a-4bed-9eb7-3235f576c2f9",
@@ -941,13 +941,13 @@
                 },
                 "conditions": [
                   {
-                    "id": "63bbf24f-04fc-4850-a5c6-7e413c778057",
                     "leftValue": "={{ $json['한 줄 정리'] }}",
-                    "rightValue": "(문화|예술|공연|전시|탐방|축제|연예|드라마|영화|음악|가요|아이돌|K-Pop|방송|생활|여행|패션|미식|맛집|취미|레저|웰빙|역사|박물관|유적|작가|독서)",
+                    "rightValue": "(경제|기업|산업|재정|금융|주식|증시|투자|펀드|코스피|코스닥|채권|금리|환율|달러|원화|인하|성장률|물가|소비|대출|규제|흑자|적자|경영|벤처|소상공인|기술자립)",
                     "operator": {
                       "type": "string",
                       "operation": "regex"
-                    }
+                    },
+                    "id": "cd00112d-9b51-4863-9372-520313320a3a"
                   }
                 ],
                 "combinator": "and"
@@ -963,13 +963,13 @@
                 },
                 "conditions": [
                   {
+                    "id": "63bbf24f-04fc-4850-a5c6-7e413c778057",
                     "leftValue": "={{ $json['한 줄 정리'] }}",
-                    "rightValue": "(경제|기업|산업|재정|금융|주식|증시|투자|펀드|코스피|코스닥|채권|금리|환율|달러|원화|인하|성장률|물가|소비|대출|규제|흑자|적자|경영|벤처|소상공인|기술자립)",
+                    "rightValue": "(문화|예술|공연|전시|탐방|축제|연예|드라마|영화|음악|가요|아이돌|K-Pop|방송|생활|여행|패션|미식|맛집|취미|레저|웰빙|역사|박물관|유적|작가|독서)",
                     "operator": {
                       "type": "string",
                       "operation": "regex"
-                    },
-                    "id": "cd00112d-9b51-4863-9372-520313320a3a"
+                    }
                   }
                 ],
                 "combinator": "and"
@@ -1027,7 +1027,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        224,
+        336,
         224
       ],
       "id": "f3943e7c-976e-4265-b70a-91848c0ebc72",
@@ -1181,7 +1181,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        48,
+        160,
         544
       ],
       "id": "723de7e9-437d-4d48-9ed0-833489498b67",
@@ -1399,14 +1399,14 @@
       "main": [
         [
           {
-            "node": "culture",
+            "node": "economy",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "economy",
+            "node": "culture",
             "type": "main",
             "index": 0
           }
@@ -1478,7 +1478,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "9c66ad82-8201-4ff0-a5aa-4ca300c1bab5",
+  "versionId": "2825a1f8-c6c3-40bc-a8f8-c0def4f63d7a",
   "meta": {
     "instanceId": "e4e35fce15bcab288b3656628f178ab7b5338d1994d95a329b7b1e3707167395"
   },
