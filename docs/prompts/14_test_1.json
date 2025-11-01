@@ -50,7 +50,7 @@
     },
     {
       "parameters": {
-        "code": "const files = $input.all();\nconst output = [];\n\nfor (const file of files) {\n  const filename = file.binary.data.fileName;\n  // 파일 내용이 텍스트로 가정됨\n  const fileContent = file.binary.data.data.toString('utf8'); \n  \n  // === 파일 내용 정규화 로직 (사용자 정의 필요) ===\n  // .md 파일 등을 읽어 날짜, 제목, 내용을 추출하는 임시 로직\n  const now = new Date().toISOString().split('T')[0];\n  const title = filename.replace(/\\.(md|txt|json)/i, '').replace(/_/g, ' ');\n  \n  output.push({\n    json: {\n      Date: now, // 파일 처리 일자\n      Title: title, // 파일명 기반 제목\n      Content: fileContent.substring(0, 200) + '...', // 내용 일부\n      Original_Filename: filename,\n      Original_Path: file.json.path\n    }\n  });\n}\n\nreturn output;"
+        "code": "const files = $input.all();\nconst output = [];\n\nfor (const file of files) {\n  const filename = file.binary.data.fileName;\n  // 파일 내용이 텍스트로 가정됨\n  const fileContent = file.binary.data.data.toString('utf8'); \n  \n  // === 파일 내용 정규화 로직 (사용자 정의 필요) ===\n  const now = new Date().toISOString().split('T')[0];\n  const title = filename.replace(/\\.(md|txt|json)/i, '').replace(/_/g, ' ');\n  \n  output.push({\n    json: {\n      Date: now,\n      Title: title,\n      Content: fileContent.substring(0, 200) + '...', \n      Original_Filename: filename,\n      Original_Path: file.json.path\n    }\n  });\n}\n\nreturn output;"
       },
       "name": "4. 데이터 정규화 및 JSON 변환 (Code)",
       "type": "n8n-nodes-base.code",
