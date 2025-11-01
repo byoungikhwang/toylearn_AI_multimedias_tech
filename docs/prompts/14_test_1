@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "interval": 10,
+        "unit": "seconds"
+      },
+      "name": "Cron (10초 주기)",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        240,
+        370
+      ]
+    },
+    {
+      "parameters": {
+        "path": "data_soc/",
+        "fileOperation": "list",
+        "options": {
+          "regex": ".*\\.md$",
+          "fullPath": true
+        }
+      },
+      "name": "Read Files (data_soc)",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        430,
+        370
+      ]
+    },
+    {
+      "parameters": {
+        "fileOperation": "read",
+        "fileId": "={{$json.path}}",
+        "options": {}
+      },
+      "name": "Read File Contents",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        620,
+        370
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "value": "={{$json.data}}",
+        "options": {
+          "format": "csv",
+          "columnDelimiter": ","
+        },
+        "fields": [
+          {
+            "name": "날짜",
+            "value": "={{new Date().toISOString().slice(0, 10)}}"
+          },
+          {
+            "name": "제목",
+            "value": "={{$json.fileName.replace(/\\.[^/\\.]+$/, \"\")}}"
+          },
+          {
+            "name": "내용",
+            "value": "={{$json.data.toString().replace(/\\n/g, ' ').slice(0, 500)}}"
+          },
+          {
+            "name": "원본_경로",
+            "value": "={{$json.path}}"
+          }
+        ]
+      },
+      "name": "Normalize Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        810,
+        370
+      ]
+    },
+    {
+      "parameters": {
+        "path": "data_base/base_data.csv",
+        "fileOperation": "append",
+        "options": {
+          "delimiter": ","
+        }
+      },
+      "name": "Append to base_data.csv",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        370
+      ]
+    },
+    {
+      "parameters": {
+        "path": "={{$json.path}}",
+        "destinationPath": "old_data/",
+        "fileOperation": "move",
+        "options": {}
+      },
+      "name": "Move File to old_data",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        1190,
+        370
+      ]
+    }
+  ],
+  "connections": {
+    "Cron (10초 주기)": [
+      [
+        "Read Files (data_soc)"
+      ]
+    ],
+    "Read Files (data_soc)": [
+      [
+        "Read File Contents"
+      ]
+    ],
+    "Read File Contents": [
+      [
+        "Normalize Data"
+      ]
+    ],
+    "Normalize Data": [
+      [
+        "Append to base_data.csv"
+      ]
+    ],
+    "Append to base_data.csv": [
+      [
+        "Move File to old_data"
+      ]
+    ]
+  }
+}
