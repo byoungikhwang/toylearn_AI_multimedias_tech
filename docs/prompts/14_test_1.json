@@ -1,0 +1,132 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "schedule": {
+          "type": "every_x_seconds",
+          "value": 10
+        }
+      },
+      "name": "1. Cron 트리거 (10초)",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        250,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "list",
+        "path": "data_soc",
+        "options": {
+          "fullPath": true
+        }
+      },
+      "name": "2. data_soc 파일 목록 읽기",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        450,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "fileName": "={{$item(\"path\").path}}",
+        "fileEncoding": "utf8",
+        "options": {
+          "fullPath": true
+        }
+      },
+      "name": "3. 각 파일 내용 읽기",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        650,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "code": "const files = $input.all();\nconst output = [];\n\nfor (const file of files) {\n  const filename = file.binary.data.fileName;\n  // 파일 내용이 텍스트로 가정됨\n  const fileContent = file.binary.data.data.toString('utf8'); \n  \n  // === 파일 내용 정규화 로직 (사용자 정의 필요) ===\n  const now = new Date().toISOString().split('T')[0];\n  const title = filename.replace(/\\.(md|txt|json)/i, '').replace(/_/g, ' ');\n  \n  output.push({\n    json: {\n      Date: now,\n      Title: title,\n      Content: fileContent.substring(0, 200) + '...', \n      Original_Filename: filename,\n      Original_Path: file.json.path\n    }\n  });\n}\n\nreturn output;"
+      },
+      "name": "4. 데이터 정규화 및 JSON 변환 (Code)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        850,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "fileName": "data_base/base_data.csv",
+        "fields": [
+          "Date",
+          "Title",
+          "Content",
+          "Original_Filename",
+          "Original_Path"
+        ],
+        "options": {
+          "append": true,
+          "delimiter": ",",
+          "header": true
+        }
+      },
+      "name": "5. base_data.csv에 추가/생성",
+      "type": "n8n-nodes-base.writeCsv",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "sourceFileName": "={{$item(\"Original_Path\")}}",
+        "destinationFileName": "old_data/{{$item(\"Original_Filename\")}}",
+        "options": {
+          "createDestinationDirectory": true
+        }
+      },
+      "name": "6. 처리 완료 파일 old_data로 이동",
+      "type": "n8n-nodes-base.file",
+      "typeVersion": 1,
+      "position": [
+        1250,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "1. Cron 트리거 (10초)": [
+      [
+        "2. data_soc 파일 목록 읽기"
+      ]
+    ],
+    "2. data_soc 파일 목록 읽기": [
+      [
+        "3. 각 파일 내용 읽기"
+      ]
+    ],
+    "3. 각 파일 내용 읽기": [
+      [
+        "4. 데이터 정규화 및 JSON 변환 (Code)"
+      ]
+    ],
+    "4. 데이터 정규화 및 JSON 변환 (Code)": [
+      [
+        "5. base_data.csv에 추가/생성"
+      ]
+    ],
+    "5. base_data.csv에 추가/생성": [
+      [
+        "6. 처리 완료 파일 old_data로 이동"
+      ]
+    ]
+  }
+}
