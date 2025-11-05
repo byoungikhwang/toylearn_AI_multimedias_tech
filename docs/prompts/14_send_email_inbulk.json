@@ -1,0 +1,403 @@
+{
+  "name": "study_messages_gmail_inbulk",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "https://drive.google.com/drive/folders/1Xp4HDL0f9gRRcNc2DWrFyR5EbLrgkgsa",
+            "mode": "url"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2368,
+        352
+      ],
+      "id": "aece1918-4dc5-41e5-a515-152e2885f5de",
+      "name": "Search files and folders",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "XVHrNSCLBrKnDfMM",
+          "name": "Google Drive account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.snippet }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Social"
+            },
+            {
+              "category": "Mics"
+            },
+            {
+              "category": "Personal"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        -2688,
+        592
+      ],
+      "id": "3055db23-c4fc-4f1a-b1be-4fd5ecee8fb9",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -2688,
+        816
+      ],
+      "id": "3fd237ad-dd2b-46fe-86b5-7a1517edf01d",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "kpL9mYfM7fsr1vcG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2176,
+        352
+      ],
+      "id": "480131f3-31e2-4918-87f1-b89d8d9f0bf1",
+      "name": "Download file1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "XVHrNSCLBrKnDfMM",
+          "name": "Google Drive account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -1968,
+        352
+      ],
+      "id": "60d2bde8-2bcf-4be4-9ddb-dafe745e2c0b",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Edit Fields1').item.json['option gmail'] }}",
+        "subject": "새로운 자료를 보내드립니다.",
+        "message": "={{ $json.data }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1776,
+        352
+      ],
+      "id": "2b0f746d-f23f-480b-9097-d5018d7264c6",
+      "name": "Send a message1",
+      "webhookId": "c684ae98-2608-4ee6-b112-a0e64f0fb134",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "TigL1G5iBDy07mPe",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3296,
+        528
+      ],
+      "id": "d04a1638-55b1-487d-92a3-a808a7e7342b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1YzG3psrENcuo0pFXZg8eaGziiZKXpRDjx7fhqX7pyPU",
+          "mode": "list",
+          "cachedResultName": "주소록",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YzG3psrENcuo0pFXZg8eaGziiZKXpRDjx7fhqX7pyPU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "시트1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YzG3psrENcuo0pFXZg8eaGziiZKXpRDjx7fhqX7pyPU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2976,
+        352
+      ],
+      "id": "def368ab-4f43-4ce1-88b4-7290b3836207",
+      "name": "Get row(s) in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fcH56dZFlV2Z5a3X",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3a2467d0-ab25-4676-a19f-950a732eede8",
+              "name": "option gmail",
+              "value": "={{ $json.gmails.join(\",\") }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2576,
+        352
+      ],
+      "id": "aa407947-ea2a-46c0-8611-4cb40c8ba162",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "option gmail",
+              "renameField": true,
+              "outputFieldName": "gmails"
+            },
+            {
+              "fieldToAggregate": "이름",
+              "renameField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -2768,
+        352
+      ],
+      "id": "be731b7e-2dd2-41d8-ac50-3bb8be6fc752",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "resource": "label"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1568,
+        352
+      ],
+      "id": "87a02a17-1ea6-4400-981e-f70484ad3c5d",
+      "name": "Get many labels",
+      "webhookId": "830cce6e-2e19-4531-8f79-bb45b9920784",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "TigL1G5iBDy07mPe",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -2880,
+        608
+      ],
+      "id": "67c99f39-6619-47ba-9dbd-2eb4d119d179",
+      "name": "Get many messages",
+      "webhookId": "e730c43b-944a-408b-ab79-98ba9d922b23",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "TigL1G5iBDy07mPe",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "Download file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get many messages",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get row(s) in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message1": {
+      "main": [
+        [
+          {
+            "node": "Get many labels",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many messages": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fe2ce110-2b35-4b13-be6e-88e970f3f0b8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "334dbaad2c52920a4eb74d6af427b7f53da9c837a59cb4abb3a43de026d677bd"
+  },
+  "id": "3Pw6tE9eLcio2VRp",
+  "tags": []
+}
