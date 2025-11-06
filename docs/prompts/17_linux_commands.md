@@ -37,4 +37,12 @@ d-----      2025-11-06   오후 5:46                images
 d-----      2025-11-06   오후 5:46                notes
 d-----      2025-11-06   오후 5:45                test
 d-----      2025-11-06   오후 5:46                videeos
+
+```
+디렉토리 삭제
+# PS C:\> rd docs,images,notes,test,videeos
+# cd..
+# PS C:\> rd commands
+# ls -l
+
 ```
