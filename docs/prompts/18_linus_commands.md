@@ -1,3 +1,4 @@
+```
 /home $ cd node/
 ~ $ pwd
 /home/node
@@ -68,3 +69,4 @@ drwxr-sr-x    2 node     node          4096 Nov  7 03:48 notes
 drwxr-sr-x    2 node     node          4096 Nov  7 03:03 project
 drwxr-sr-x    2 node     node          4096 Nov  7 03:41 test
 drwxr-sr-x    2 node     node          4096 Nov  7 03:49 videos
+```
